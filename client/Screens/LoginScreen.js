@@ -23,9 +23,8 @@ import InputField from '../component/InputField';
 
 const LoginScreen = ({ navigation }) => {
   function handleLogin(){
-    axios.get('http://localhost:5000/login',{ })
-    .then(res => console.log(res),navigation.navigate('Home'))
-    .catch((err) => console.log("err", err))
+    axios.get('http://localhost:5000/login', {  })
+    .then(res => console.log(res),navigation.navigate('Home'));
   }
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', paddingTop: 10 }}>
@@ -38,7 +37,7 @@ const LoginScreen = ({ navigation }) => {
 
         <Text
           style={{
-            // fontFamily: 'Roboto-Medium',
+            fontFamily: 'Roboto-Medium',
             fontSize: 28,
             fontWeight: '500',
             color: '#333',

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 20,
     padding: 10,
-    borderRadius: 0,
+    borderRadius: 30,
     backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOpacity: 0.3,
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   imageContainer: {
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
     overflow: 'hidden',
     marginBottom: 10,
   },
