@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+// import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import LoginScreen from "./Screens/LoginScreen";
 import RegisterScreen from "./Screens/RegisterScreen";
 import ViewDetail from "./Screens/ViewDetail";
