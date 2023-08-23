@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from "react";
+
 import {
   SafeAreaView,
   View,
   Text,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
   Image
 } from 'react-native';
 
@@ -22,12 +24,37 @@ import CustomButton from '../component/CustomButton';
 import InputField from '../component/InputField';
 
 const LoginScreen = ({ navigation }) => {
-  function handleLogin(){
-    axios.get('http://localhost:5000/login',{ })
-    .then(res => console.log(res),navigation.navigate('Home'))
-    .catch((err) => console.log("err", err))
-  }
+
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (field, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://192.168.43.84:5000/login", formData);
+      console.log("Login successful", response.data);
+      // Handle success, navigate to another screen, show a success message, etc.
+    } catch (error) {
+      console.error("Login failed", error);
+      // Handle error, show an error message, etc.
+    }
+  };
+
   return (
+
+
+
+
+
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', paddingTop: 10 }}>
       <View style={{ paddingHorizontal: 25 }}>
         <View style={{ alignItems: 'center' }}>
@@ -48,7 +75,7 @@ const LoginScreen = ({ navigation }) => {
         </Text>
 
 
-        <InputField
+        {/* <InputField
           label={'Email ID'}
           icon={
             <MaterialIcons
@@ -59,9 +86,9 @@ const LoginScreen = ({ navigation }) => {
             />
           }
           keyboardType="email-address"
-        />
+        /> */}
 
-        <InputField
+        {/* <InputField
           label={'Password'}
           icon={
             <Ionicons
@@ -74,9 +101,51 @@ const LoginScreen = ({ navigation }) => {
           inputType="password"
           fieldButtonLabel={"Forgot?"}
           fieldButtonFunction={() => { }}
-        />
+        /> */}
+        <View style={style.inputfield}>
+          <MaterialIcons
+            name="alternate-email"
+            size={20}
+            color="#666"
+            style={{ marginRight: 5 }}
+          />
+
+          <TextInput
+            // style={styles.input}
+            value={formData.email}
+            placeholder={"Email"}
+            onChangeText={(text) => handleChange("email", text)}
+            autoCapitalize={"none"}
+          />
+        </View>
+
+
+        <View style={style.inputfield}>
+          <Ionicons
+            name="ios-lock-closed-outline"
+            size={20}
+            color="#666"
+            style={{ marginRight: 5 }}
+          />
+          <TextInput
+            // style={styles.input}
+            value={formData.password}
+            placeholder={"Password"}
+            onChangeText={(text) => handleChange("password", text)}
+            autoCapitalize={"none"}
+            secureTextEntry
+          />
+        </View>
+
+
 
         <CustomButton label={"Login"} onPress={() => {handleLogin()}} />
+
+
+
+
+
+
         <TouchableOpacity onPress={() => {
           navigation.navigate('Home')
         }}
@@ -140,5 +209,15 @@ const LoginScreen = ({ navigation }) => {
     </SafeAreaView>
   );
 };
+
+const style = StyleSheet.create({
+  inputfield: {
+    flexDirection: "row",
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
+    paddingBottom: 8,
+    marginBottom: 25,
+  },
+});
 
 export default LoginScreen;
