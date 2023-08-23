@@ -43,7 +43,6 @@ function LowerNavigation(props) {
                     color="#666"
                     style={{ marginRight: 5,alignSelf:'center' }}
                 />
-                {/* <Image source={{ uri: 'https://picsum.photos/200' }} style={{ height: 20, width: 20, alignSelf: 'center' }} /> */}
                 <Text >Account </Text>
             </TouchableOpacity>
 
