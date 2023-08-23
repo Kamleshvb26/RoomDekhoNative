@@ -33,6 +33,7 @@ const LoginController = async (req, res) => {
           
     } catch (error) {
       res.send("500");
+      
     }
   };
 
