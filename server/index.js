@@ -1,4 +1,4 @@
-const express = require("express");//hi kamlesh
+const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 

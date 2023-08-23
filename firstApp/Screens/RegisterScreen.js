@@ -33,7 +33,7 @@ function RegisterScreen({navigation}) {
 
                 <Text
                     style={{
-                        fontFamily: 'Roboto-Medium',
+                        // fontFamily: 'Roboto-Medium',
                         fontSize: 28,
                         fontWeight: '500',
                         color: '#333',
@@ -74,7 +74,7 @@ function RegisterScreen({navigation}) {
                     </TouchableOpacity>
 
                 </View>
-                <Text style={{ textAlign: 'center', color: '#666', marginBottom: 30 ,fontWeight:700}}>
+                <Text style={{ textAlign: 'center', color: '#666', marginBottom: 30 }}>
                     Or, Register with ...
                 </Text>
 
@@ -141,7 +141,7 @@ function RegisterScreen({navigation}) {
           <TouchableOpacity onPress={()=>{
             navigation.navigate('Login')
           }} >
-            <Text style={{ color: '#AD40AF', fontWeight: '700' }}> Login</Text>
+            <Text style={{ color: '#AD40AF' }}> Login</Text>
           </TouchableOpacity>
         </View>
 
