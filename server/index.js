@@ -6,6 +6,7 @@ const cors = require("cors");
 const bcrypt = require('bcrypt');
 const authRoutes = require("./Routes/Route");
 
+//ok
 const app = express();
 
 mongoose.connect('mongodb://127.0.0.1/roomdekhoDB', {
@@ -16,6 +17,7 @@ mongoose.connect('mongodb://127.0.0.1/roomdekhoDB', {
   .catch(error => console.error('MongoDB connection error:', error));
 
 // Middleware
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
