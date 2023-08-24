@@ -24,6 +24,7 @@ function Card(props) {
 
   return (
     <View style={styles.container}>
+    
       <View style={styles.imageContainer}>
         <Image
           source={{ uri: 'https://picsum.photos/201' }}
@@ -39,6 +40,12 @@ function Card(props) {
           />
           <Text style={styles.titleText}>Bungalow Name</Text>
         </View>
+        <View style={styles.data}>
+          <Text> Nashik, Amruthdham </Text>
+          <Text> PIN: 432998  </Text>
+          <Text> 40K/month</Text>
+        </View>
+
         <TouchableOpacity
           onPress={async() => {
             // try {
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 20,
     padding: 10,
-    borderRadius: 30,
+    borderRadius: 10,
     backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOpacity: 0.3,
@@ -76,8 +83,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   imageContainer: {
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderRadius: 10,
+    // borderBottomRightRadius: 10,
     overflow: 'hidden',
     marginBottom: 10,
   },
@@ -119,6 +126,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
+  data:{
+    marginBottom:5
+  }
 });
 
 export default Card;

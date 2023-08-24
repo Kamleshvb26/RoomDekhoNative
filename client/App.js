@@ -5,6 +5,7 @@ import LoginScreen from "./Screens/LoginScreen";
 import RegisterScreen from "./Screens/RegisterScreen";
 import ViewDetail from "./Screens/ViewDetail";
 import CreateScreen from "./Screens/CreateScreen"
+import UserAccount from "./Screens/UserAccount";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Card from "./component/Card";
@@ -34,6 +35,11 @@ const App = () => {
         <Stack.Screen
           name="Create"
           component={CreateScreen}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen
+          name="Useraccount"
+          component={UserAccount}
           options={{ title: 'Welcome' }}
         />
         <Stack.Screen
