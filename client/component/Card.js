@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import * as SecureStore from 'expo-secure-store';
+
+
+
+
 
 function Card(props) {
-const navigation = useNavigation();
+  const [token, setToken]=useState("ll");
+  const navigation = useNavigation();
+
+  async function getValueFor(key) {
+    let result = await SecureStore.getItemAsync(key);
+    if (result) {
+      console.log(result)
+      setToken(result);
+    } else {
+      console.log('No values stored under that key.');
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -12,6 +30,7 @@ const navigation = useNavigation();
           style={styles.image}
         />
       </View>
+      
       <View style={styles.contentContainer}>
         <View style={styles.titleContainer}>
           <Image
@@ -21,7 +40,17 @@ const navigation = useNavigation();
           <Text style={styles.titleText}>Bungalow Name</Text>
         </View>
         <TouchableOpacity
-          onPress={() => {
+          onPress={async() => {
+            // try {
+            //   console.log("clicked");
+            //   getValueFor("token");
+            //   const response = await axios.post("http://192.168.43.151:5000/test", {"token":token});
+            //   console.log(" successful", response);
+            //   // Handle success, navigate to another screen, show a success message, etc.
+            // } catch (error) {
+            //   console.error(" failed", error);
+            //   // Handle error, show an error message, etc.
+            // }
             navigation.navigate('ViewDetail')
           }}
           style={styles.button}
@@ -29,6 +58,7 @@ const navigation = useNavigation();
           <Text style={styles.buttonText}>View Details</Text>
         </TouchableOpacity>
       </View>
+      
     </View>
   );
 }
@@ -37,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 20,
     padding: 10,
-    borderRadius: 0,
+    borderRadius: 30,
     backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOpacity: 0.3,
@@ -46,8 +76,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   imageContainer: {
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
     overflow: 'hidden',
     marginBottom: 10,
   },

@@ -14,6 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
+import * as SecureStore from 'expo-secure-store';
 
 // import LoginSVG from '../assets/Login.svg';
 // import GoogleSVG from '../assets/Google.svg';
@@ -22,6 +23,28 @@ import axios from 'axios';
 
 import CustomButton from '../component/CustomButton';
 import InputField from '../component/InputField';
+
+
+async function save(key, value) {
+  try{
+    // console.log(key,value);
+    await SecureStore.setItemAsync(key, value)
+
+  }
+  catch(error){
+    console.error("Trouble in saving token ", error);
+  }
+ 
+}
+
+async function getValueFor(key) {
+  let result = await SecureStore.getItemAsync(key);
+  if (result) {
+    return result;
+  } else {
+    console.log('No values stored under that key.');
+  }
+}
 
 const LoginScreen = ({ navigation }) => {
 
@@ -43,8 +66,11 @@ const LoginScreen = ({ navigation }) => {
   const handleLogin = async () => {
     navigation.navigate("Home")
     try {
-      const response = await axios.post("http://192.168.43.84:5000/login", formData);
+      const response = await axios.post("http://192.168.43.151:5000/login", formData);
       console.log("Login successful", response.data);
+      save("token",response.data.token);
+      // console.log("here")
+      getValueFor("token");
       // Handle success, navigate to another screen, show a success message, etc.
     } catch (error) {
       console.error("Login failed", error);

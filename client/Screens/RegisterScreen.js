@@ -36,7 +36,7 @@ function RegisterScreen({ navigation }) {
   const handleSignup = async () => {
     navigation.navigate('Create');
     try {
-      const response = await axios.post("http://192.168.43.84:5000/signup", formData);
+      const response = await axios.post("http://192.168.43.151:5000/signup", formData);
 
       console.log("Signup successful", response.data);
       // Handle success, navigate to another screen, show a success message, etc.

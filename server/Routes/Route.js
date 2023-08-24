@@ -13,6 +13,13 @@ router.post("/signup", SignupController);
 
 router.post("/login", LoginController);
 
+// router.post("/test", (req,res)=>{
+//   console.log(req.body);
+//   res.send("200");
+
+// });
+
+
 router.post("/", (req, res) => {
   res.send("hii there");
 });
