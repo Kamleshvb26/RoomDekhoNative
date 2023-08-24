@@ -34,6 +34,7 @@ function RegisterScreen({ navigation }) {
   };
 
   const handleSignup = async () => {
+    navigation.navigate('Create');
     try {
       const response = await axios.post("http://192.168.43.84:5000/signup", formData);
 

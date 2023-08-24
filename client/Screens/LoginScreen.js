@@ -25,6 +25,8 @@ import InputField from '../component/InputField';
 
 const LoginScreen = ({ navigation }) => {
 
+  // navigation.navigate('Home')
+
 
   const [formData, setFormData] = useState({
     email: "",
@@ -39,6 +41,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleLogin = async () => {
+    navigation.navigate("Home")
     try {
       const response = await axios.post("http://192.168.43.84:5000/login", formData);
       console.log("Login successful", response.data);
