@@ -24,10 +24,8 @@ const ViewDetail = () => {
         {/* Add more details as needed */}
       </View>
 
-        <TouchableOpacity>
-            onPress={()=>{navigation.navigate('Home')}}
-            <Text> hi</Text>
-        </TouchableOpacity>
+
+        <TouchableOpacity onPress={()=>{navigation.navigate('ImageStorage')}} ><Text> Click</Text></TouchableOpacity>
       <View>
       </View>
     </View>

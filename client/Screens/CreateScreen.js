@@ -11,7 +11,7 @@ import {
   Image,
 } from "react-native";
 
-const CreateScreen = ({ navigation }) => {
+const CreateScreen = ({ navigation }) => { 
   return (
     <SafeAreaView style={style.safeareastyle}>
             <Text> Create new Data </Text>            

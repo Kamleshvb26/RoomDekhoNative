@@ -5,9 +5,6 @@ import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 
 
-
-
-
 function Card(props) {
   const [token, setToken]=useState("ll");
   const navigation = useNavigation();
