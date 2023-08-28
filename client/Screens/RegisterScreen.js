@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IP } from "../IP";
 import {
   SafeAreaView,
   View,
@@ -20,6 +21,7 @@ import CustomButton from "../component/CustomButton";
 import InputField from "../component/InputField";
 
 function RegisterScreen({ navigation }) {
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -35,8 +37,10 @@ function RegisterScreen({ navigation }) {
 
   const handleSignup = async () => {
     navigation.navigate('Create');
+    
     try {
-      const response = await axios.post("http://192.168.43.151:5000/signup", formData);
+      const url = `http://${IP}:5000/signup `;
+      const response = await axios.post(url, formData);
 
       console.log("Signup successful", response.data);
       // Handle success, navigate to another screen, show a success message, etc.
@@ -88,6 +92,7 @@ function RegisterScreen({ navigation }) {
 
           <TextInput
             // style={styles.input}
+            required
             value={formData.name}
             placeholder={"Name"}
             onChangeText={(text) => handleChange("name", text)}
@@ -107,6 +112,7 @@ function RegisterScreen({ navigation }) {
 
           <TextInput
             // style={styles.input}
+            required
             value={formData.email}
             placeholder={"Email"}
             onChangeText={(text) => handleChange("email", text)}
@@ -124,6 +130,7 @@ function RegisterScreen({ navigation }) {
           />
           <TextInput
             // style={styles.input}
+            required
             value={formData.password}
             placeholder={"Password"}
             onChangeText={(text) => handleChange("password", text)}

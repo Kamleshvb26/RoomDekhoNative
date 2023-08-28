@@ -1,7 +1,9 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 const ViewDetail = () => {
+    const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image
@@ -21,6 +23,13 @@ const ViewDetail = () => {
         <Text style={styles.locationText}>Location: New York, USA</Text>
         {/* Add more details as needed */}
       </View>
+
+        <TouchableOpacity>
+            onPress={()=>{navigation.navigate('Home')}}
+            <Text> hi</Text>
+        </TouchableOpacity>
+      <View>
+      </View>
     </View>
   );
 };
@@ -29,10 +38,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    marginTop:35
   },
   image: {
     height: 300,
-    width: '100%',
+    width: '98%',
+    marginLeft:4
   },
   detailsContainer: {
     padding: 15,

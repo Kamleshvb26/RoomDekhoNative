@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IP } from "../IP";
 
 import {
   SafeAreaView,
@@ -28,8 +29,7 @@ import InputField from '../component/InputField';
 async function save(key, value) {
   try{
     // console.log(key,value);
-    await SecureStore.setItemAsync(key, value)
-
+    await SecureStore.setItemAsync(key, value);
   }
   catch(error){
     console.error("Trouble in saving token ", error);
@@ -40,6 +40,7 @@ async function save(key, value) {
 async function getValueFor(key) {
   let result = await SecureStore.getItemAsync(key);
   if (result) {
+    console.log(result);
     return result;
   } else {
     console.log('No values stored under that key.');
@@ -64,26 +65,31 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const handleLogin = async () => {
-    navigation.navigate("Home")
     try {
-      const response = await axios.post("http://192.168.43.151:5000/login", formData);
-      console.log("Login successful", response.data);
-      save("token",response.data.token);
-      // console.log("here")
-      getValueFor("token");
-      // Handle success, navigate to another screen, show a success message, etc.
+      const url = `http://${IP}:5000/login`;
+      const response = await axios.post(url, formData);
+      if(response.data === 401){
+        window.alert("Invalid Credentials");
+      }else if(response.data === 500){
+        window.alert("Something went wrong");        
+      }else if(response.data.token){
+        console.log("Login successful", response.data);
+        save("token",response.data.token);
+        navigation.navigate("Home");
+      }else{
+        window.alert("Something went wrong");        
+
+      }
+      // getValueFor("token");
+      // const val = await SecureStore.getItemAsync("token");
+      // console.log("val is :", val);
+
     } catch (error) {
       console.error("Login failed", error);
-      // Handle error, show an error message, etc.
     }
   };
 
   return (
-
-
-
-
-
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', paddingTop: 10 }}>
       <View style={{ paddingHorizontal: 25 }}>
         <View style={{ alignItems: 'center' }}>
@@ -227,6 +233,7 @@ const LoginScreen = ({ navigation }) => {
             marginBottom: 30,
           }}>
           <Text>New to the app?</Text>
+          
           <TouchableOpacity onPress={() => {
             navigation.navigate('Register')
           }} >
