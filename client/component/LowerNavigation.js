@@ -4,12 +4,11 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Image, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 
 function LowerNavigation(props) {
-    // const navigation= createNativeStackNavigator
-  const navigation = useNavigation();
-
+    const navigation=useNavigation();
     return (
         <View style={{ flexDirection: 'row', justifyContent: 'space-around',}}>
             <TouchableOpacity >

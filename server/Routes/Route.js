@@ -7,17 +7,14 @@ const jwt = require('jsonwebtoken');
 
 const {SignupController} = require("../Controller/Signup");
 const {LoginController } = require("../Controller/Login");
+const {FormController} =require("../Controller/Form")
 
 
 router.post("/signup", SignupController);
 
 router.post("/login", LoginController);
 
-// router.post("/test", (req,res)=>{
-//   console.log(req.body);
-//   res.send("200");
-
-// });
+router.post("/addRoom",FormController);
 
 
 router.post("/", (req, res) => {

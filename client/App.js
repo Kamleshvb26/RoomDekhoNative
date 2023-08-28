@@ -1,5 +1,6 @@
 import React from "react";
 import LoginScreen from "./Screens/LoginScreen";
+import AddRoomScreen from "./Screens/AddRoomScreen"
 import RegisterScreen from "./Screens/RegisterScreen";
 import ViewDetail from "./Screens/ViewDetail";
 import CreateScreen from "./Screens/CreateScreen";
