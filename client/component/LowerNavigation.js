@@ -2,9 +2,11 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 
 function LowerNavigation(props) {
+    const navigation=useNavigation();
     return (
         <View style={{ flexDirection: 'row', justifyContent: 'space-around',}}>
             <TouchableOpacity >
@@ -36,7 +38,7 @@ function LowerNavigation(props) {
                 {/* <Image source={{ uri: 'https://picsum.photos/200' }} style={{ height: 20, width: 20, alignSelf: 'center' }} /> */}
                 <Text >Notification</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('AddRoomScreen')}>
                 <AntDesign
                     name="user"
                     size={20}

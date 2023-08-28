@@ -36,7 +36,7 @@ function Card(props) {
           <Image
             source={{ uri: 'https://picsum.photos/200' }}
             style={styles.icon}
-          />
+          />  
           <Text style={styles.titleText}>Bungalow Name</Text>
         </View>
         <TouchableOpacity
