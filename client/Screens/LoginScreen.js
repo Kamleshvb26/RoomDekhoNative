@@ -27,6 +27,7 @@ import InputField from '../component/InputField';
 
 
 async function save(key, value) {
+
   try{
     // console.log(key,value);
     await SecureStore.setItemAsync(key, value);
@@ -36,6 +37,8 @@ async function save(key, value) {
   }
  
 }
+
+
 
 async function getValueFor(key) {
   let result = await SecureStore.getItemAsync(key);

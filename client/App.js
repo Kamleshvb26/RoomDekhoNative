@@ -22,9 +22,10 @@ const App = () => {
         }}
       >
 
-        <Stack.Screen name="ImageStorage" component={ImageStorage} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="ImageStorage" component={ImageStorage} />
         <Stack.Screen name="Create" component={CreateScreen} />
+        <Stack.Screen name="addRoom" component={AddRoomScreen} />
         <Stack.Screen name="Useraccount" component={UserAccount} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />

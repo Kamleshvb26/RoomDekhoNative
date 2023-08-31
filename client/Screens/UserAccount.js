@@ -8,7 +8,27 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from '@react-navigation/native';
+
+
+const deleteToken = async () => {
+  try {
+    await SecureStore.deleteItemAsync('token'); 
+    console.log('Token deleted successfully');
+  } catch (error) {
+    console.log('Error deleting token:', error);
+  }
+};
+
 function Untitled(props) {
+  const navigation = useNavigation();
+
+  function handleLogout() {
+    deleteToken();
+    navigation.navigate('Login')
+
+  }
   return (
     <View style={styles.entire}>
       <View style={styles.imageStack}>
@@ -20,7 +40,7 @@ function Untitled(props) {
       </View>
 
       <View style={styles.rect2}>
-       <Icon name="user" size={20} color="#fff" style={styles.icn2} />
+        <Icon name="user" size={20} color="#fff" style={styles.icn2} />
 
         <Text style={styles.textlink5}> Vishal Pawar</Text>
       </View>
@@ -56,7 +76,7 @@ function Untitled(props) {
             <Text style={styles.textlink2}> Notification Setting</Text>
             <Text style={styles.textlink3}> &gt; </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btn}>
+          <TouchableOpacity style={styles.btn} onPress={handleLogout}>
             <Icon name="sign-out" size={20} color="#000" style={styles.icn} />
             <Text style={styles.textlink2}> Logout</Text>
             <Text style={styles.textlink3}> &gt; </Text>
@@ -115,7 +135,7 @@ const styles = StyleSheet.create({
     marginLeft: 92,
     padding: 5,
     display: "flex",
-    flexDirection:"row",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -130,7 +150,7 @@ const styles = StyleSheet.create({
   textlink5: {
     color: "#ddd",
     fontSize: 20,
-    fontWeight:"500"
+    fontWeight: "500"
   },
   textlink3: {
     color: "black",
@@ -177,12 +197,12 @@ const styles = StyleSheet.create({
     color: "grey",
     marginRight: 6,
   },
-  entire:{
-    backgroundColor:"#2874F0",
-    marginTop:34
+  entire: {
+    backgroundColor: "#2874F0",
+    marginTop: 34
   },
-  icn2:{
-    marginRight:4
+  icn2: {
+    marginRight: 4
   }
 });
 

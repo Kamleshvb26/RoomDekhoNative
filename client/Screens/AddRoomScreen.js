@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import CustomButton from '../component/CustomButton';
+import * as SecureStore from 'expo-secure-store';
+
 import axios from 'axios';
+import { IP } from "../IP";
+
 
 
 
@@ -29,10 +33,18 @@ const AddRoomScreen = () => {
   };
 
   const handleSubmit = async () => {
+   
     
     try {
-      const response = await axios.post("http://192.168.43.151:5000/addRoom", { houseName: houseName, contactDetails: contactDetails, ownerName: ownerName, description: description, address: address, imageUrls: images });
-      console.log("Added successfully", response.data);
+      const token = await SecureStore.getItemAsync("token");
+      if(token){
+        const response = await axios.post(`http://${IP}:5000/addRoom`, {token:token, houseName: houseName, contactDetails: contactDetails, ownerName: ownerName, description: description, address: address, imageUrls: images });
+        console.log("Added successfully", response.data);
+
+      }
+      else{
+        console.log("please login first");
+      }
     } catch (err) {
       console.error("Error", err);
     }

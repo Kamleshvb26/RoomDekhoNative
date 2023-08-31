@@ -45,16 +45,7 @@ function Card(props) {
 
         <TouchableOpacity
           onPress={async() => {
-            // try {
-            //   console.log("clicked");
-            //   getValueFor("token");
-            //   const response = await axios.post("http://192.168.43.151:5000/test", {"token":token});
-            //   console.log(" successful", response);
-            //   // Handle success, navigate to another screen, show a success message, etc.
-            // } catch (error) {
-            //   console.error(" failed", error);
-            //   // Handle error, show an error message, etc.
-            // }
+          
             navigation.navigate('ViewDetail')
           }}
           style={styles.button}

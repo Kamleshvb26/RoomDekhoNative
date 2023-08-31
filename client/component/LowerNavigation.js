@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Image, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useNavigation } from '@react-navigation/native';
 
 
 function LowerNavigation(props) {
@@ -30,7 +29,7 @@ function LowerNavigation(props) {
                 {/* <Image source={{ uri: 'https://picsum.photos/200' }} style={{ height: 20, width: 20, alignSelf: 'center' }} /> */}
                 <Text >Search</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation.navigate('addRoom')}}>
                 <AntDesign
                     name="bells"
                     size={20}
